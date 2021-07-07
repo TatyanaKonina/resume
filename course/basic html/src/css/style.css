@@ -1,0 +1,12 @@
+body{
+    background-color: khaki;
+}
+
+h2{
+    color:red;
+    text-align: center;
+    font-weight: 800;
+    font-style: italic;
+    text-decoration: line-through;
+    font-size:30px;
+}
