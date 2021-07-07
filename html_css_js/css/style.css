@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Anton&family=Josefin+Sans&family=Lexend+Deca&family=Livvic&display=swap');
+
+
+html,
+body {
+    margin    : 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+
+}
+
+/*global*/
+
+:root {
+    --text-grey : #3f4954;
+    --text-light: #686666da;
+    --bg-color  : #0f0f0f;
+    --white     : #ffffff;
+    --midnight  : #104f55;
+
+    /* gradient color   */
+    --sky: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+a {
+    text-decoration: none;
+    color          : var(--text-grey);
+
+}
+
+.flex-row {
+    display       : flex;
+    flex-direction: row;
+    flex-wrap     : wrap;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/*  nav */
+
+.nav {
+    background: white;
+    padding   : 0.2rem;
+    height    : 0rem;
+    min-height: 100vh;
+    overflow  : hidden;
+}
+
+.nav .nav-menu {
+    justify-content: space-between;
+}
+
+.nav .nav-items {
+    display: flex;
+    margin : 0;
+}
+
+.nav .nav-items .nav-link {
+    padding  : 1.6rem 1rem;
+    font-size: 1.1rem;
+    position : relative;
+    font-family: Abel;
+}
+.nav .nav-items .nav-link:hover{
+    background-color: var(--midnight);
+
+}
+.nav .nav-items .nav-link:hover a{
+    color:var(--white)
+}
+.nav .nav-brand a {
+    font-size  : 1.6rem;
+    padding    : 1rem 0;
+    display    : block;
+    font-size: 1.6rem;
+    font-family: Lexend;
+}
+
+.nav .social {
+    padding: 1.4rem 0;
+}
+.nav .social i{
+    padding: 0.2rem;
+
+}
+
+.nav .social i:hover{
+    color: #a1c4cf;
+}
+
+
+
+/*Viewport less then or equal to 750px       x     */
+
+@media only screen and (max-width:750px){
+    .nav .nav-menu, .nav .nav-items{
+        flex-direction: column;
+
+    }
+}
