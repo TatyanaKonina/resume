@@ -10,7 +10,10 @@ h2{
     text-decoration: line-through;
     font-size:30px;
 }
-
+/* 
+html {
+    font-size: 30px;
+} */
 * {
     box-sizing: border-box;
 }
@@ -38,5 +41,10 @@ img{
 
 .red{
     background-color: red;
-    height: 50px;
+    width: 50vw;
+    height: 30vh;
+    /* width: 50rem;
+    font-size: 30px; */
+    /* height: 50% ; */
 }
+ 
