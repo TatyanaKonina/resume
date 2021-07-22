@@ -1,0 +1,18 @@
+
+@import 'base/vars';
+*{
+    font-family: 'MuseoModerno', cursive;
+    a{
+        text-decoration: none;
+    }
+}
+.container{
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+@import 'blocks/promo';
+@import 'blocks/header';
+@import 'blocks/buttons';
+@import 'blocks/advantages';
+@import 'blocks/titles';
