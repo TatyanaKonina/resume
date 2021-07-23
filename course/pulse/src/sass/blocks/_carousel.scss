@@ -1,6 +1,6 @@
 .carousel {
     padding: 81px 0;
-
+    // position: relative;
     &__inner {
         margin: 0 auto;
         width : 750px;
@@ -9,7 +9,7 @@
     .slick-prev, .slick-next {
         position: absolute;
         top: 50%;
-        left: -66px;
+        left: -40px;
         transform: translateY(-50%);
         border: none;
         background: none;
@@ -19,7 +19,16 @@
         }
     }
     .slick-next{
-        right: -66px;
+        right:-40px;
         left:auto;
     }
+    .tns-item{
+        img{
+        display: block;
+        margin: 0 auto;
+        }
+        
+    }
+    
+
 }
