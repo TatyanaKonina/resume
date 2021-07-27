@@ -6,11 +6,13 @@
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, minmax(150px, 300px)) ; 
-    grid-template-rows: repeat(3, minmax(100px,auto));
-    grid-auto-columns: minmax(100px, 300px);
+    /* grid-template-columns: repeat(3, minmax(150px, 300px)) ; 
+    grid-template-rows: repeat(3, minmax(100px,auto)); */
+    grid-template-columns: [col1-s] 150px [col2-s] 150px [col3-s] 150px;
+    grid-template-rows: [row1-s] 150px [row2-s] 150px [row3-s] 150px;
+    grid-auto-rows: minmax(100px, auto);
     gap: 20px;
-    grid-auto-flow: column;
+
 
 }
 
@@ -23,4 +25,17 @@
     font-size       : 26px;
     border          : 1px solid #000;
     border-radius   : 4px;
-}px
+}
+#first{
+    grid-column: col1-s/col3-s;
+
+}
+#second{
+    grid-row: 2/4;
+    grid-column-start: 2;
+}
+#third{
+    grid-row-start: 1;
+    grid-row-end: 4;
+    grid-column-start: 3;
+}
