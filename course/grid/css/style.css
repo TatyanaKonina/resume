@@ -6,20 +6,21 @@
 
 .grid-container {
     display: grid;
-    margin: 82px auto 0 82px;
-    width                : 1140px;
-    grid-template-columns: repeat(4, 240px);
-    grid-template-rows: repeat(2,260px);
-    grid-auto-rows: 260px;
-
-    gap: 60px;
-
+    grid-template-columns: repeat(3, minmax(150px, 300px)) ; 
+    grid-template-rows: repeat(3, minmax(100px,auto));
+    grid-auto-columns: minmax(100px, 300px);
+    gap: 20px;
+    grid-auto-flow: column;
 
 }
 
-.grid-elem img{
-     width: 100%;
-}
-/* .grid-elem img{
-    display: block;
-} */
+.grid-elem {
+    /* height: 50px; */
+    background-color: rgba(1, 1, 96, 1);
+    color           : #fff;
+    line-height     : 50px;
+    text-align      : center;
+    font-size       : 26px;
+    border          : 1px solid #000;
+    border-radius   : 4px;
+}px
