@@ -6,7 +6,10 @@
         <p class="text-xs-center">
           <router-link :to="{name: 'login'}">Have an account? </router-link>
         </p>
-       <mcv-validation-errors v-if="validationErrors" :validation-errors='validationErrors'></mcv-validation-errors>
+        <mcv-validation-errors
+          v-if="validationErrors"
+          :validation-errors="validationErrors"
+        ></mcv-validation-errors>
         <form @submit.prevent="onSubmit">
           <fieldset class="form-group">
             <input
@@ -47,6 +50,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import McvValidationErrors from '@/components/ValidationErrors'
 import {actionTypes} from '@/store/modules/auth'
 export default {
@@ -62,12 +66,10 @@ export default {
     }
   },
   computed: {
-    isSubmitting() {
-      return this.$store.state.auth.isSubmitting
-    },
-    validationErrors(){
-      return this.$store.state.auth.validationErrors
-    }
+    ...mapState({
+      isSubmitting: state => state.auth.isSubmitting,
+      validationErrors: state => state.auth.validationErrors
+    })
   },
   methods: {
     onSubmit() {
