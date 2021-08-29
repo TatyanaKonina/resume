@@ -13,6 +13,7 @@
               placeholder="Username"
               type="text"
               class="form-control form-control-lg"
+              v-model="username"
             />
           </fieldset>
           <fieldset class="form-group">
@@ -20,6 +21,7 @@
               placeholder="Email"
               type="text"
               class="form-control form-control-lg"
+              v-model="email"
             />
           </fieldset>
 
@@ -28,6 +30,7 @@
               placeholder="Password"
               type="text"
               class="form-control form-control-lg"
+              v-model="password"
             />
           </fieldset>
 
@@ -41,6 +44,13 @@
 <script>
 export default {
   name: 'McvRegister',
+  data (){
+    return {
+      email: '',
+      password: '',
+      username: ''
+    }
+  },
   computed: {
     isSubmitting() {
       return this.$store.state.auth.isSubmitting
@@ -49,10 +59,13 @@ export default {
   methods: {
     onSubmit() {
       this.$store.dispatch('register', {
+        email: this.email,
+        username:this.username,
+        password:this.password
 
       })
-      .then(user => {
-        console.log('success',user)
+      .then(() => {
+        this.$router.push({name:'home'})
       })
     }
   }
