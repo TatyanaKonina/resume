@@ -48,8 +48,12 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log('submit')
-      this.$store.commit('registerStart')
+      this.$store.dispatch('register', {
+
+      })
+      .then(user => {
+        console.log('success',user)
+      })
     }
   }
 }
