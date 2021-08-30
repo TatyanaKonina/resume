@@ -1,24 +1,29 @@
 import authApi from '@/api/auth'
 import {setItem} from '@/helpers/persistanceStorage'
-
+// ---------------------------
 const state = {
     isSubmitting: false,
+    isLoading: false,
     currentUser: null,
     validationErrors: null,
     isLoggedIn: null
 }
+
+// ----------------------------------
 export const mutationTypes = {
     registerStart :"[auth] registerStart",
     registerSuccess: "[auth] registerSuccess",
     registerFailure: "[auth] registerFailure",
+
     loginStart :"[auth] loginStart",
     loginSuccess: "[auth] loginSuccess",
-    loginFailure: "[auth] loginFailure"
+    loginFailure: "[auth] loginFailure",
+
+    getCurrentUserStart :"[auth] getCurrentUserStart",
+    getCurrentUserSuccess: "[auth] getCurrentUserSuccess",
+    getCurrentUserFailure: "[auth] getCurrentUserFailure"
 }
-export const actionTypes = {
-    register: '[auth] register',
-    login : '[auth] login'
-}
+
 
 const mutations = {
     [mutationTypes.registerStart](state) {
@@ -48,9 +53,29 @@ const mutations = {
     [mutationTypes.loginFailure](state,payload){
         state.isSubmitting = false
         state.validationErrors = payload
+    },
+    [mutationTypes.getCurrentUserStart](state){
+        state.isLoading = true
+    },
+    [mutationTypes.getCurrentUserSuccess](state,payload){
+        state.isLoading = false,
+        state.currentUser = payload,
+        state.isLoggedIn = true
+    },
+    [mutationTypes.getCurrentUserFailure](state){
+        state.isLoggedIn = false,
+        state.isLoading = false,
+        state.currentUser = null
     }
 }
 
+// --------------------------------------------
+export const actionTypes = {
+    register: '[auth] register',
+    login : '[auth] login',
+    getCurrentUser: '[auth] getCurrentUser'
+
+}
 const actions = {
     [actionTypes.register](context,credentials){
         return new Promise(resolve => {
@@ -63,6 +88,19 @@ const actions = {
             })
             .catch(result => {
                 context.commit(mutationTypes.registerFailure,result.response.data.errors)
+            })
+        })
+    },
+    [actionTypes.getCurrentUser](context){
+        return new Promise(resolve => {
+            context.commit(mutationTypes.getCurrentUserStart)
+            authApi.getCurrentUser()
+            .then(response=>{
+                context.commit(mutationTypes.getCurrentUserSuccess,response.data.user)
+                resolve(response.data.user)
+            })
+            .catch(() => {
+                context.commit(mutationTypes.getCurrentUserFailure)
             })
         })
     },
@@ -82,6 +120,9 @@ const actions = {
     },
     
 }
+
+// -----------------------------------------------------
+
 export const gettersTypes = {
     currentUser : '[auth] currentUser',
     isLoggedIn : '[auth] isLoggedIn',
@@ -99,6 +140,7 @@ const getters = {
         return state.isLoggedIn === false
     }
 }
+// -------------------------------------------
 export default {
     state,
     mutations,
