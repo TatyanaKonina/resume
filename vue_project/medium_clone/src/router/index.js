@@ -20,6 +20,47 @@ const routes = [{
     name: 'login',
     component: Login
   },
+  {
+    path:'/feed',
+    name:'yourFeed',
+    component: GlobalFeed
+  },
+  {
+    path:'/tags/:slag',
+    name:'tag',
+    component: GlobalFeed
+  },
+  {
+    path:'/articles/new',
+    name:'createArticle',
+    component: GlobalFeed
+  },
+  {
+    path:'/articles/:slug',
+    name:'article',
+    component: GlobalFeed
+  },
+  {
+    path:'/articles/:slag/edit',
+    name:'editArticle',
+    component: GlobalFeed
+  },
+  {
+    path:'/settings',
+    name:'settings',
+    component: GlobalFeed
+  },
+  {
+    path:'/profiles/slug',
+    name:'userProfile',
+    component: GlobalFeed
+  },
+  {
+    path:'/profiles/slug/favorites',
+    name:'userProfileFavorites',
+    component: GlobalFeed
+  },
+  
 
 
 ]
