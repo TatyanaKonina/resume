@@ -1,7 +1,7 @@
 <template>
   <div class="">
-    <div v-if="isLoading">Loading...</div>
-    <div v-if="error">Something bad happend</div>
+    <mcv-loading v-if="isLoading" />
+    <mcv-error-message v-if="error" />
     <div v-if="feed">
       <div
         class="article-preview"
@@ -27,25 +27,33 @@
             <span class="date"> {{ article.createdAt }}</span>
           </div>
           <div class="pull-xs-right">
-              add to fav
+            add to fav
           </div>
         </div>
-        <router-link class="preview-link" :to="{name: 'article', params: {slug: article.slug}}">
-            <h1>{{article.title}}</h1>
-            <p>{{article.description}}</p>
-            <span>Read more...</span>
-            tag list
+        <router-link
+          class="preview-link"
+          :to="{name: 'article', params: {slug: article.slug}}"
+        >
+          <h1>{{ article.title }}</h1>
+          <p>{{ article.description }}</p>
+          <span>Read more...</span>
+          tag list
         </router-link>
       </div>
-      <mcv-pagination :total="feed.articlesCount" :limit="limit" :current-page="currentPage" :url="baseUrl">
-
-      </mcv-pagination  >
+      <mcv-pagination
+        :total="feed.articlesCount"
+        :limit="limit"
+        :current-page="currentPage"
+        :url="baseUrl"
+      >
+      </mcv-pagination>
     </div>
-    
   </div>
 </template>
 
 <script>
+import McvErrorMessage from '@/components/ErrorMessage'
+import McvLoading from '@/components/Loading'
 import {stringify, parseUrl} from 'query-string'
 import {limit} from '@/helpers/vars'
 import McvPagination from '@/components/Pagination'
@@ -53,8 +61,10 @@ import {actionTypes} from '@/store/modules/feed'
 import {mapState} from 'vuex'
 export default {
   name: 'McvFeed',
-  components:{
-    McvPagination
+  components: {
+    McvPagination,
+    McvLoading,
+    McvErrorMessage
   },
   props: {
     apiUrl: {
@@ -62,23 +72,22 @@ export default {
       required: true
     }
   },
-  data (){
+  data() {
     return {
-      
       limit,
-      url : '/'
+      url: '/'
     }
   },
   mounted() {
     this.fetchFeed()
   },
   watch: {
-    currentPage(){
+    currentPage() {
       this.fetchFeed()
     }
   },
-  methods:{
-    fetchFeed(){
+  methods: {
+    fetchFeed() {
       const parsedUrl = parseUrl(this.apiUrl)
       const strigifiedParams = stringify({
         limit,
@@ -96,13 +105,13 @@ export default {
       feed: state => state.feed.data,
       error: state => state.feed.error
     }),
-    currentPage(){
+    currentPage() {
       return Number(this.$route.query.page || '1')
     },
-    baseUrl(){
+    baseUrl() {
       return this.$route.path
     },
-    offest(){
+    offest() {
       return this.currentPage * limit - limit
     }
   }
