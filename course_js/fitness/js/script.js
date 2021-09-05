@@ -240,7 +240,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 object[key] = value;
             })
 
-         
+
             fetch('server.php', {
                     method: 'POST',
                     headers: {
@@ -253,7 +253,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     statusMessage.remove();
                 }).catch(() => {
                     showThanksModal(message.failure)
-                }).finally(()=>{
+                }).finally(() => {
                     form.reset()
                 })
 
@@ -297,5 +297,7 @@ window.addEventListener('DOMContentLoaded', () => {
     //     .then(response => response.json())
     //     .then(json => console.log(json))
 
-
+    fetch('http://localhost:3000/menu')
+        .then(data => data.json())
+        .then(res => console.log(res))
 });
