@@ -224,18 +224,15 @@ window.addEventListener('DOMContentLoaded', () => {
     function postData(form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            const statusMessage = document.createElement('img')
+            let statusMessage = document.createElement('img')
             statusMessage.src = message.loading
             statusMessage.style.cssText = `
             display:block;
             margin: 0 auto;`
 
             // form.append(statusMessage);
-            form.insertAdjacentElement('afterend',statusMessage)
-            const request = new XMLHttpRequest();
-            request.open('POST', 'server.php');
+            form.insertAdjacentElement('afterend', statusMessage)
 
-            request.setRequestHeader('Content-type', 'application/json');
             const formData = new FormData(form);
 
             const object = {};
@@ -243,19 +240,23 @@ window.addEventListener('DOMContentLoaded', () => {
                 object[key] = value;
             })
 
-            const json = JSON.stringify(object)
-            console.log(json)
-            request.send(json);
-            request.addEventListener('load', () => {
-                if (request.status === 200) {
-                    console.log(request.response)
+         
+            fetch('server.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify(object)
+                }).then(data => data.text())
+                .then(data => {
                     showThanksModal(message.success)
-                    form.reset()
                     statusMessage.remove();
-                } else {
+                }).catch(() => {
                     showThanksModal(message.failure)
-                }
-            })
+                }).finally(()=>{
+                    form.reset()
+                })
+
         })
     }
 
@@ -277,5 +278,24 @@ window.addEventListener('DOMContentLoaded', () => {
             prevModalDialog.classList.remove('hide');
             closeModal();
         }, 4000)
+
+
+
+
+
+
     }
+    // fetch('https://jsonplaceholder.typicode.com/posts', {
+    //         method: 'POST',
+    //         body: JSON.stringify({
+    //             name: 'alex'
+    //         }),
+    //         headers: {
+    //             'contant-type': 'application/json'
+    //         }
+    //     })
+    //     .then(response => response.json())
+    //     .then(json => console.log(json))
+
+
 });
