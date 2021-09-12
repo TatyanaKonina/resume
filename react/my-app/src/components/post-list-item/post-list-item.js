@@ -23,7 +23,7 @@ export default class PostListItem extends Component {
     }
     render (){
 
-        const {label} = this.props
+        const {label,onDelete} = this.props
         const {important,like} = this.state
         let classNames = 'app-list-item justify-content-between d-flex'
         classNames = important ? classNames + ' important' : classNames
@@ -39,7 +39,8 @@ export default class PostListItem extends Component {
                         onClick={this.onImportant}>
                         </i>
                     </button>
-                    <button type="button" className="btn-trash btn-sm">
+                    <button type="button" className="btn-trash btn-sm"
+                    onClick={onDelete}>
                         <i className="fa fa-trash">
                         </i>
                     </button>

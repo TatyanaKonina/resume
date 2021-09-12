@@ -1,16 +1,17 @@
 import './post-add-form.css'
 
-const PostAddForm = () => {
+const PostAddForm = ({onAdd}) => {
     return (
-        <form className="buttom-panel d-flex">
+        <div className="buttom-panel d-flex">
             <input type="text"
             placeholder="Type"
             className="form-control new-post-label"
             />
-            <button type="submit" className="btn btn-outline-secondary">
+            <button 
+            onClick={()=>{onAdd('hello')}} type="submit" className="btn btn-outline-secondary">
                 Add
             </button>
-        </form>
+        </div>
     )
 }
 
