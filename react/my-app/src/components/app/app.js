@@ -17,14 +17,16 @@ export default class App extends Component {
         super(props);
         this.state = {
             data : [
-                {label: "Going to learn React",important : true ,id:'1'},
-                {label: "That is good" ,id:'2'},
-                {label: "I need a break..." ,id:'3'}
+                {label: "Going to learn React",like:false, important : true ,id:'1'},
+                {label: "That is good" ,id:'2',like:false},
+                {label: "I need a break..." ,id:'3',like:false}
             ]
         };
         this.deleteItem = this.deleteItem.bind(this);
         this.addItem = this.addItem.bind(this);
         this.maxId = 4;
+        this.onToggleImportant = this.onToggleImportant.bind(this)
+        this.onToggleLike = this.onToggleLike.bind(this)
     }
     deleteItem(id){
         this.setState(({data}) => {
@@ -48,15 +50,36 @@ export default class App extends Component {
             }
         })
     }
+    onToggleImportant(id){
+        console.log(id)
+    }
+    onToggleLike(id){
+        this.setState(({data}) =>{
+            const index = data.findIndex(elem=>elem.id === id)
+            const old = data[index]
+            const newItem = {...old,like: !old.like}
+            const newArr = [...data.slice(0,index),newItem,...data.slice(index+1)];
+            return {
+                data:newArr
+            }
+        })
+    }
     render (){
+        const {data} = this.state
+        const liked = data.filter(item=> item.like).length
+        const allPosts = data.length
+        console.log(allPosts)
         return (
             <AppBlock>
-                <AppHeader/>
+                <AppHeader liked={liked} allPosts={allPosts}/>
                 <div className="search-panel d-flex">
                     <SearchPanel/>
                     <PostStatusFilter/>
                 </div>
-                <PostList onDelete={this.deleteItem} posts={this.state.data}/>
+                <PostList onToggleImportant={this.onToggleImportant} 
+                        onDelete={this.deleteItem} 
+                        posts={this.state.data}
+                        onToggleLike={this.onToggleLike}/>
                 <PostAddForm onAdd={this.addItem}/>
             </AppBlock>
             
