@@ -20,13 +20,15 @@ export default class App extends Component {
                 {label: "Going to learn React",like:false, important : true ,id:'1'},
                 {label: "That is good" ,id:'2',like:false},
                 {label: "I need a break..." ,id:'3',like:false}
-            ]
+            ],
+            term:''
         };
         this.deleteItem = this.deleteItem.bind(this);
         this.addItem = this.addItem.bind(this);
         this.maxId = 4;
         this.onToggleImportant = this.onToggleImportant.bind(this)
         this.onToggleLike = this.onToggleLike.bind(this)
+        this.onUpdateSearch = this.onUpdateSearch.bind(this)
     }
     deleteItem(id){
         this.setState(({data}) => {
@@ -72,21 +74,33 @@ export default class App extends Component {
             }
         })
     }
+    searchPost(items,term){
+        if(term.length === 0){
+            return items
+        }
+        return items.filter(item =>{
+            return item.label.indexOf(term) > -1
+        })
+    }
+    onUpdateSearch(term){
+        this.setState({term})
+    }
     render (){
-        const {data} = this.state
+        const {data,term} = this.state
         const liked = data.filter(item=> item.like).length
         const allPosts = data.length
-        console.log(allPosts)
+        
+        const visiblePosts = this.searchPost(data,term)
         return (
             <AppBlock>
                 <AppHeader liked={liked} allPosts={allPosts}/>
                 <div className="search-panel d-flex">
-                    <SearchPanel/>
+                    <SearchPanel onUpdateSearch={this.onUpdateSearch}/>
                     <PostStatusFilter/>
                 </div>
                 <PostList onToggleImportant={this.onToggleImportant} 
                         onDelete={this.deleteItem} 
-                        posts={this.state.data}
+                        posts={visiblePosts}
                         onToggleLike={this.onToggleLike}/>
                 <PostAddForm onAdd={this.addItem}/>
             </AppBlock>
