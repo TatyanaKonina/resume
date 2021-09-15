@@ -3,16 +3,16 @@ import React, {Component} from 'react';
 import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
-import ItemList from '../itemList';
+import CharacterPage from '../characterPage/characterPage';
 import Error from '../error';
-import PersonDetails from '../personDetails';
+
 
 import './app.css';
 
 export default class App extends Component {
     state = {
         showRandomChar: true,
-        selectedChar: 110,
+        
         error: false
     }
     componentDidCatch(){
@@ -25,9 +25,7 @@ export default class App extends Component {
             }
         });
     }
-    onCharSelected = (id) => {
-        this.setState({selectedChar:id})
-    }
+    
     render() {
         if (this.state.error) {
             return <Error/>
@@ -47,14 +45,8 @@ export default class App extends Component {
                                 onClick={this.toggleRandomChar}>Toggle random character</button>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col md='6'>
-                            <ItemList onCharSelected={this.onCharSelected}/>
-                        </Col>
-                        <Col md='6'>
-                            <PersonDetails charId={this.state.selectedChar}/>
-                        </Col>
-                    </Row>
+                    <CharacterPage/>
+                    
                 </Container>
             </>
         );
