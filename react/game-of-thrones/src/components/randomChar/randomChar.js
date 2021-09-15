@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './randomChar.css';
 import Spinner  from '../spinner';
+import Error from '../error';
 import gotService from '../../services/gotServices';
 export default class RandomChar extends Component {
     constructor(){
@@ -9,7 +10,8 @@ export default class RandomChar extends Component {
     }
     state = {
         char:{},
-        loading:true
+        loading:true,
+        error:false
     }
     gotService = new gotService();
     onCharLoaded = (char) =>{
@@ -17,19 +19,41 @@ export default class RandomChar extends Component {
             char,loading:false
         })
     }
+    onError = (err) =>{
+        this.setState({
+            error:true,
+            loading:false
+        })
+    }
     updateChar(){
         const id = Math.floor(Math.random()*140 + 25);
         this.gotService.getCharacter(id)
             .then(this.onCharLoaded)
+            .catch(this.onError)
     }
     render() {
-        const { char:{name,gender,born,died,culture},loading} = this.state
-        if (loading){
-            return <Spinner/>
-        }
+        const { char,loading, error} = this.state
+        const errorMes = error ? <Error/> : null
+        const spinner = loading ? <Spinner/> :null
+        const content = !loading || error ? <Vue char={char}/> : null
+
+
+        
         return (
             <div className="random-block rounded">
-                <h4>Random Character: {name}</h4>
+                {content}
+                {errorMes}
+                {spinner}
+            </div>
+        );
+    }
+}
+
+const Vue = ({char}) =>{
+     const {name,gender,born,died,culture} = char 
+    return (
+        <>
+        <h4>Random Character: {name}</h4>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item d-flex justify-content-between">
                         <span className="term">Gender </span>
@@ -48,8 +72,7 @@ export default class RandomChar extends Component {
                         <span>{culture}</span>
                     </li>
                 </ul>
-            </div>
-        );
-    }
+        </> 
+    )
 }
 
