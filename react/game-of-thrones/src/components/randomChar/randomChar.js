@@ -7,12 +7,15 @@ export default class RandomChar extends Component {
     constructor(){
         super()
         this.updateChar();
+       
     }
     state = {
         char:{},
         loading:true,
-        error:false
+        error:false,
+        
     }
+    
     gotService = new gotService();
     onCharLoaded = (char) =>{
         this.setState({
@@ -31,20 +34,20 @@ export default class RandomChar extends Component {
             .then(this.onCharLoaded)
             .catch(this.onError)
     }
+    
     render() {
-        const { char,loading, error} = this.state
+        const { char,loading, error,view} = this.state
         const errorMes = error ? <Error/> : null
         const spinner = loading ? <Spinner/> :null
         const content = (!loading && !error) ? <Vue char={char}/> : null
-
-
         
         return (
+          
             <div className="random-block rounded">
                 {content}
                 {errorMes}
                 {spinner}
-            </div>
+            </div> 
         );
     }
 }
