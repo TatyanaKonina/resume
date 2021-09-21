@@ -1,20 +1,10 @@
 import { Component } from 'react'
-import {Col,Row} from 'reactstrap'
 import ItemList from "../itemList"
 import Error from '../error'
 import PersonDetails from "../personDetails"
 import gotService from '../../services/gotServices'
+import RowBlock from '../rowBlock'
 
-const RowBlock = ({left,rigth})=>{
-    return(<Row>
-                        <Col md='6'>
-                           {left}
-                        </Col>
-                        <Col md='6'>
-                            {rigth}
-                        </Col>
-            </Row>)
-}
 export default class CharacterPage extends Component {
     gotService = new gotService();
     state = {
