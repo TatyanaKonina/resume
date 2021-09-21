@@ -4,6 +4,17 @@ import ItemList from "../itemList"
 import Error from '../error'
 import PersonDetails from "../personDetails"
 import gotService from '../../services/gotServices'
+
+const RowBlock = ({left,rigth})=>{
+    return(<Row>
+                        <Col md='6'>
+                           {left}
+                        </Col>
+                        <Col md='6'>
+                            {rigth}
+                        </Col>
+            </Row>)
+}
 export default class CharacterPage extends Component {
     gotService = new gotService();
     state = {
@@ -20,18 +31,13 @@ export default class CharacterPage extends Component {
         if (this.state.error) {
             return <Error/>
         }
-        return (
-            <Row>
-                        <Col md='6'>
-                            <ItemList 
+        const charDetails = (<PersonDetails charId={this.state.selectedChar}/>)
+        const itemList = ( <ItemList 
                             renderItem={( {name,gender}) => `${name} (${gender})`}
                             getData={this.gotService.getAllCharacters}
-                            onCharSelected={this.onCharSelected}/>
-                        </Col>
-                        <Col md='6'>
-                            <PersonDetails charId={this.state.selectedChar}/>
-                        </Col>
-            </Row>
+                            onCharSelected={this.onCharSelected}/>)
+        return (
+           <RowBlock left={itemList} rigth={charDetails}></RowBlock>
         )
     }
 
