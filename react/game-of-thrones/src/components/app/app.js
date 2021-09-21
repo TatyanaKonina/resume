@@ -5,11 +5,13 @@ import Header from '../header';
 import RandomChar from '../randomChar';
 import CharacterPage from '../characterPage/characterPage';
 import Error from '../error';
-
-
+import ItemList from '../itemList';
+import PersonDetails from '../personDetails';
+import gotService from '../../services/gotServices';
 import './app.css';
 
 export default class App extends Component {
+    gotService = new gotService()
     state = {
         showRandomChar: true,
         
@@ -46,7 +48,25 @@ export default class App extends Component {
                         </Col>
                     </Row>
                     <CharacterPage/>
-                    
+                    <Row>
+                        <Col md='6'>
+                            <ItemList 
+                            renderItem={(item) => (<><span>{item.name}</span><button>Click me</button> </>)}
+                            onCharSelected={this.onCharSelected} 
+                            getData={this.gotService.getAllBooks}>
+                            
+                            </ItemList>
+                        </Col>
+                       
+                        <Col md='6'>
+                            <ItemList 
+                            renderItem={ (item) => item.name}
+                            onCharSelected={this.onCharSelected} 
+                            getData={this.gotService.getAllHouses}>
+                            
+                            </ItemList>
+                        </Col>
+                    </Row>
                 </Container>
             </>
         );
