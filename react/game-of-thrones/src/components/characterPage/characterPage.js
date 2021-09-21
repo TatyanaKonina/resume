@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import ItemList from "../itemList"
 import Error from '../error'
-import PersonDetails from "../personDetails"
+import PersonDetails,{Field} from "../personDetails"
 import gotService from '../../services/gotServices'
 import RowBlock from '../rowBlock'
 
@@ -21,7 +21,12 @@ export default class CharacterPage extends Component {
         if (this.state.error) {
             return <Error/>
         }
-        const charDetails = (<PersonDetails charId={this.state.selectedChar}/>)
+        const charDetails = (
+        <PersonDetails charId={this.state.selectedChar}>
+            <Field field='gender' label='Gender'></Field>
+            <Field field='born' label='Born'></Field>
+        </PersonDetails>
+        )
         const itemList = ( <ItemList 
                             renderItem={( {name,gender}) => `${name} (${gender})`}
                             getData={this.gotService.getAllCharacters}
