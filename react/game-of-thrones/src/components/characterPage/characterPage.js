@@ -14,7 +14,7 @@ export default class CharacterPage extends Component {
     componentDidCatch(){
         this.setState({error:true})
     }
-    onCharSelected = (id) => {
+    onItemSelected = (id) => {
         this.setState({selectedChar:id})
     }
     render (){
@@ -25,7 +25,7 @@ export default class CharacterPage extends Component {
         const itemList = ( <ItemList 
                             renderItem={( {name,gender}) => `${name} (${gender})`}
                             getData={this.gotService.getAllCharacters}
-                            onCharSelected={this.onCharSelected}/>)
+                            onItemSelected={this.onItemSelected}/>)
         return (
            <RowBlock left={itemList} rigth={charDetails}></RowBlock>
         )

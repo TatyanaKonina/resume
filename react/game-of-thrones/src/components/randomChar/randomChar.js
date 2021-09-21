@@ -19,7 +19,7 @@ export default class RandomChar extends Component {
     componentWillUnmount(){
         clearInterval(this.timerId)
     }
-    onCharLoaded = (char) =>{
+    onItemLoaded = (char) =>{
         this.setState({
             char,loading:false
         })
@@ -34,7 +34,7 @@ export default class RandomChar extends Component {
 
         const id = Math.floor(Math.random()*140 + 25);
         this.gotService.getCharacter(id)
-            .then(this.onCharLoaded)
+            .then(this.onItemLoaded)
             .catch(this.onError)
     }
     
