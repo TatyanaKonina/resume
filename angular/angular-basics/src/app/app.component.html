@@ -3,7 +3,5 @@
 
 
 
-<p [ngClass]='{
-  red: backToggle,
-  blue: !backToggle
-}'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia id eaque reprehenderit. Autem, quod placeat sapiente nulla illo corporis et vero dolor ea non labore nam hic perspiciatis at praesentium.</p>
+<p [class.blue]='!backToggle'
+[class.red]='backToggle'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis aliquam reprehenderit iure voluptate, accusamus libero nam delectus at fugit in suscipit, illo dolore ea aperiam id deserunt ut quasi neque.</p>
