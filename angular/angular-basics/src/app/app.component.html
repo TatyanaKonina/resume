@@ -1,5 +1,12 @@
 <h1>Hello</h1>
+<button (click)="backToggle=! backToggle"></button>
 
-<p>{{title}}</p>
+<div [ngStyle]="{
+  width:'200px',
+  height:'200px',
+  borderRadius: '5px',
+  border: '1px solid grey',
+  background: backToggle ? 'red' : 'blue'
+}" class="div">
 
-<input type="text" [(ngModel)]='title' >
+</div>

@@ -7,8 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   
- title = 'initial'
- onInput(event:Event){
-   this.title = (<HTMLInputElement>event.target).value
- }
+ backToggle = false
 }
