@@ -19,7 +19,7 @@ export default class RandomChar extends Component {
     componentWillUnmount(){
         clearInterval(this.timerId)
     }
-    onCharLoaded = (char) =>{
+    onItemLoaded = (char) =>{
         this.setState({
             char,loading:false
         })

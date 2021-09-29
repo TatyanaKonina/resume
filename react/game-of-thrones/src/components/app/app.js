@@ -57,15 +57,19 @@ export default class App extends Component {
                             
                             </ItemList>
                         </Col>
-                       
                         <Col md='6'>
+                            <PersonDetails charId={this.state.selectedChar} ></PersonDetails>
+                        </Col>
+
+                       
+                        {/* <Col md='6'>
                             <ItemList 
                             renderItem={ (item) => item.name}
                             onItemSelected={this.onItemSelected} 
                             getData={this.gotService.getAllHouses}>
                             
                             </ItemList>
-                        </Col>
+                        </Col> */}
                     </Row>
                 </Container>
             </>
