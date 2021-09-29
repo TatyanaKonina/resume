@@ -1,4 +1,6 @@
 <h1>Hello</h1>
 
 
-<img [src]='img' alt="react">
+<button (click)='onClick()'>click me</button>
+<input type='text' #myInput (blur)='onBlur(myInput.value)' (keyup.enter)='onInput($event)'>
+<p>{{val}}</p>
