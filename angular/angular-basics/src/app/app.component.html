@@ -1,12 +1,9 @@
 <h1>Hello</h1>
 <button (click)="backToggle=! backToggle"></button>
 
-<div [ngStyle]="{
-  width:'200px',
-  height:'200px',
-  borderRadius: '5px',
-  border: '1px solid grey',
-  background: backToggle ? 'red' : 'blue'
-}" class="div">
 
-</div>
+
+<p [ngClass]='{
+  red: backToggle,
+  blue: !backToggle
+}'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia id eaque reprehenderit. Autem, quod placeat sapiente nulla illo corporis et vero dolor ea non labore nam hic perspiciatis at praesentium.</p>
