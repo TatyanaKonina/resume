@@ -52,7 +52,7 @@ interface UserInterfase{
     name:string,
     age:number,
     logInfo : () => void
-    id?: any
+    id?: any /* необязательный парметр */
 }
 const user = {
     name:'Tatyana',
