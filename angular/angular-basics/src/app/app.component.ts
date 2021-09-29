@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'angular-basics';
+  title = 'DYNAMIC TITLE'
+  arr=[1,2]
 }
