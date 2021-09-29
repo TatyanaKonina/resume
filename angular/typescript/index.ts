@@ -15,8 +15,31 @@ function logInfo(name: string,age: number): void{
 logInfo('Tatyana',20)
 
 function calc ( a:number,b:number | string):number{
+    if (typeof b === 'string') b = +b
     return a+b
 }
 console.log(calc(2,3))
 
+
+class Server {
+    static VERSION = '1.03.20'
+    // public name: string;
+    // protected ip:number
+    private status:string = 'working'
+    constructor(public name:string,protected ip:number){
+        this.name = name
+        this.ip = ip
+    }
+    public turnOn(){
+        this.status = 'working'
+
+    }
+    protected turnOff(){
+        this.status = 'offline'
+    }
+    getStatus():string{
+        return this.status
+    }
+}
+const server:Server = new  Server ('aws',1234)
 
