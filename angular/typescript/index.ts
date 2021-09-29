@@ -12,6 +12,7 @@ let numArr: Array<number> = [1,2,3]
 function logInfo(name: string,age: number): void{
     console.log(`info : ${name} ${age}`)
 }
+
 logInfo('Tatyana',20)
 
 function calc ( a:number,b:number | string):number{
@@ -43,3 +44,20 @@ class Server {
 }
 const server:Server = new  Server ('aws',1234)
 
+
+
+
+//  ----------------------------
+interface UserInterfase{
+    name:string,
+    age:number,
+    logInfo : () => void
+    id?: any
+}
+const user = {
+    name:'Tatyana',
+    age:20,
+    logInfo(){
+        console.log(this.name + ' ' + this.age)
+    }
+}

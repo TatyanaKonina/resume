@@ -15,6 +15,10 @@ function calc(a, b) {
 console.log(calc(2, 3));
 var Server = /** @class */ (function () {
     function Server(name, ip) {
+        this.name = name;
+        this.ip = ip;
+        // public name: string;
+        // protected ip:number
         this.status = 'working';
         this.name = name;
         this.ip = ip;
@@ -32,3 +36,10 @@ var Server = /** @class */ (function () {
     return Server;
 }());
 var server = new Server('aws', 1234);
+var user = {
+    name: 'Tatyana',
+    age: 20,
+    logInfo: function () {
+        console.log(this.name + ' ' + this.age);
+    }
+};
