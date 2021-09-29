@@ -1,7 +1,7 @@
 <h1>Hello</h1>
 <button (click)="backToggle=! backToggle"></button>
 
+<p *ngIf='backToggle; else blueP' class='red'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit totam nobis quibusdam excepturi inventore sapiente nisi blanditiis sunt rem saepe laboriosam, voluptatibus nostrum quos iusto quaerat deleniti libero dolores consequatur.</p>
 
+<ng-template #blueP><p  class='blue'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum consectetur doloribus architecto libero est consequatur facere recusandae magni velit, iusto corrupti nobis! Dolor, nam vel. Minus repudiandae ipsam maxime voluptatem.</p></ng-template>
 
-<p [class.blue]='!backToggle'
-[class.red]='backToggle'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis aliquam reprehenderit iure voluptate, accusamus libero nam delectus at fugit in suscipit, illo dolore ea aperiam id deserunt ut quasi neque.</p>
