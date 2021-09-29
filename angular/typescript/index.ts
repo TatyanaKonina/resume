@@ -76,3 +76,21 @@ class User implements SayHello{
         console.log(this.name + 'hello')
     }
 }
+
+// --------------
+const arr:number[] = [1,2,3]
+
+
+const arr2:Array<number> = [1,2,3]
+
+
+interface User2{
+    id: number
+    name: string
+    age: number
+    
+}
+const users: Array<User2> = [
+    {id: 1,name:'dcd',age:2},
+
+]
