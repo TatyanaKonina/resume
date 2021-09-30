@@ -14,23 +14,8 @@ export interface Post{
 
 
 
-export class AppComponent implements OnInit{
-  posts: Post[]=[
-    {title: 'dlldld', text: 'vfvvvvvvv',id:1},
-    {title: 'krfnrgrg', text: 'fvd',id:2}
-  ]
-  updatePosts(post:Post){
-    this.posts.unshift(post)
-  }
-  removePost(id:number){
-    this.posts= this.posts.filter(p => p.id !== id)
+export class AppComponent{
+  isVisible = true
 
-  }
-  ngOnInit(){
-    setTimeout(()=>{
-      console.log('Timeout')
-      this.posts[0].title = 'CHANGE'
-    },5000)
-  }
   
 }
