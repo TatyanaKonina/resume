@@ -19,5 +19,8 @@ export class AppComponent {
     {title: 'dlldld', text: 'vfvvvvvvv',id:1},
     {title: 'krfnrgrg', text: 'fvd',id:2}
   ]
+  updatePosts(post:Post){
+    this.posts.unshift(post)
+  }
   
 }
