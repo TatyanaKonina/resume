@@ -1,4 +1,5 @@
-import { Component, ContentChild, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewInit,AfterViewChecked, Component, ContentChild, DoCheck, ElementRef, Input, OnChanges, OnInit,  SimpleChanges, ViewChild, OnDestroy, Output, EventEmitter } from '@angular/core';
+
 import { Post } from '../app.component';
 
 @Component({
@@ -6,18 +7,60 @@ import { Post } from '../app.component';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.sass']
 })
-export class PostComponent implements OnInit {
+export class PostComponent 
+implements 
+OnInit,
+OnChanges,
+DoCheck,
+AfterContentInit, 
+AfterContentChecked,
+AfterViewInit,
+AfterViewChecked,
+OnDestroy
+{
 
   @Input()
   post: Post;
+  @Output() 
+  onRemove = new EventEmitter<number>()
   @ContentChild('info',{static:true})
   infoRef: ElementRef
  
   
-  constructor() { }
+  constructor() { 
+    console.log('constructor')
+  }
+  removePost(){
+    this.onRemove.emit(this.post.id)
+
+  }
 
   ngOnInit(): void {
-    console.log(this.infoRef.nativeElement)
+    console.log('ngOnInit')
+    // console.log(this.infoRef.nativeElement)
+  }
+  ngOnChanges(changes:SimpleChanges):void{
+    console.log('ngOnChanges',changes)
+
+  }
+  ngDoCheck(){
+    console.log('check')
+  }
+  ngAfterContentInit(){
+    console.log('content init')
+  }
+  ngAfterContentChecked(){
+    console.log('content checked')
+  }
+
+  ngAfterViewInit(){
+    console.log('view initt')
+  }
+  ngAfterViewChecked(){
+    console.log('view checked')
+  }
+  ngOnDestroy(){
+    console.log('destroy')
   }
 
 }
