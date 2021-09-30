@@ -1,11 +1,12 @@
-import { AfterContentChecked, AfterContentInit, AfterViewInit,AfterViewChecked, Component, ContentChild, DoCheck, ElementRef, Input, OnChanges, OnInit,  SimpleChanges, ViewChild, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewInit,AfterViewChecked, Component, ContentChild, DoCheck, ElementRef, Input, OnChanges, OnInit,  SimpleChanges, ViewChild, OnDestroy, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 import { Post } from '../app.component';
 
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.sass']
+  styleUrls: ['./post.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PostComponent 
 implements 
