@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Input, Renderer2 } from "@angular/core";
+import { Directive, ElementRef, HostBinding, HostListener, Input, Renderer2 } from "@angular/core";
 
 @Directive({selector:'[appStyle]'})
 
@@ -11,18 +11,16 @@ export class StyleDirective {
     constructor(private elRef: ElementRef,private render : Renderer2){
         // this.render.setStyle(elRef.nativeElement,'color','blue')
     }
+    @HostBinding('style.color') elColor = 'black'
 
     @HostListener('click',['$event.target'])
     onClick(event:Event){
         console.log(event)
     }
     @HostListener('mouseenter') onEnter(){
-        this.render.setStyle(this.elRef.nativeElement,'color',this.color)
-        this.render.setStyle(this.elRef.nativeElement,'border',this.dStyle.border)
-        this.render.setStyle(this.elRef.nativeElement,'fontWeight',this.dStyle.fontWeight)
-        this.render.setStyle(this.elRef.nativeElement,'borderRadius',this.dStyle.borderRadius)
+        this.elColor = this.color
     }
     @HostListener('mouseleave') onLeave(){
-        this.render.setStyle(this.elRef.nativeElement,'color',null)
+       this.elColor = 'black'
     }
 }
