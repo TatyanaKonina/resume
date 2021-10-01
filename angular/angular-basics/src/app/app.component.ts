@@ -1,5 +1,6 @@
-import { MethodCall } from '@angular/compiler';
+
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 export interface Post{
   title:string
@@ -16,17 +17,22 @@ export interface Post{
 
 
 
-export class AppComponent{
-  search: ''
-  searchField = 'title'
-  posts: Post[] = [
-    {title: 'Beer', text: 'ok'},
-    {title: 'Bread', text: 'not ok'}
-  ]
-  addPost(){
-    this.posts.unshift({
-      title:'dcdc',
-      text:'vmfdvmd'
-    })
-  }
+export class AppComponent implements OnInit{
+ p: Promise<string> = new Promise<string>(resolve => {
+   setTimeout(()=> {
+     resolve('Promise Resolved')
+   },4000)
+ }) 
+
+ date$: Observable<Date> =  new Observable(obs =>{
+   setInterval(() => {
+     obs.next(new Date())
+   },1000)
+ })
+ date:Date
+ ngOnInit():void{
+   this.date$.subscribe(date =>{
+     this.date = date;
+   })
+ }
 }
