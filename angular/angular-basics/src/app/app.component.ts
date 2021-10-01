@@ -16,7 +16,5 @@ export interface Post{
 
 
 export class AppComponent{
-  e:number = Math.E
-
-  str = 'helLo world'
+  date: Date = new Date()
 }
