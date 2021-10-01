@@ -15,7 +15,7 @@ export interface Post{
 
 
 export class AppComponent{
-  isVisible = true
+
 
   
 }

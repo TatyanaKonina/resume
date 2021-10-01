@@ -1,14 +1,4 @@
 <div class="container">
   <h1>hello</h1>
-  <p appStyle='red' [dStyle]='{border:"1px solid blue", borderRadius: "5px"}'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore reprehenderit deserunt atque! Fugiat ea, debitis accusantium officia, repudiandae exercitationem error nemo nesciunt quos, modi laborum aliquid esse voluptatibus ex temporibus!</p>
-  <button (click)="isVisible = !isVisible" class="btn">Toggle</button>
   
-  <!-- <ng-template [ngIf]='isVisible'>
-    <div  class='wrap'>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio sit atque illum a tempore eaque est ipsam sapiente culpa vitae, autem, voluptatem corporis impedit provident libero maxime soluta beatae quisquam.</p>
-    </div>
-  </ng-template> -->
-  <div  class='wrap' *appIfnot='!isVisible'>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio sit atque illum a tempore eaque est ipsam sapiente culpa vitae, autem, voluptatem corporis impedit provident libero maxime soluta beatae quisquam.</p>
-  </div>
 </div>
