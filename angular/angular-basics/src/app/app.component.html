@@ -1,6 +1,13 @@
 <div class="container">
   <h1>hello</h1>
-  <p>{{'hello  ' |exMarks }}</p>
+  <button class="btn" (click)='searchField = "title"'>Title</button>
+  <button class="btn" (click)='searchField = "text"'>text</button>
+  <input type="text" [(ngModel)]='search'>
+  <div *ngFor='let post of posts | filter:search: searchField' class="card">
+
+    <h2>{{post.title}}</h2>
+    <p>{{post.text}}</p>
+  </div>
 
 
 </div>

@@ -4,8 +4,9 @@ import { Component, OnInit } from '@angular/core';
 export interface Post{
   title:string
   text:string
-  id? : number
+  [key : string]: string
 }
+
 
 @Component({
   selector: 'app-root',
@@ -16,5 +17,10 @@ export interface Post{
 
 
 export class AppComponent{
-  
+  search: ''
+  searchField = 'title'
+  posts: Post[] = [
+    {title: 'Beer', text: 'ok'},
+    {title: 'Bread', text: 'not ok'}
+  ]
 }
