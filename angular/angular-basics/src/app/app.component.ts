@@ -1,3 +1,4 @@
+import { MethodCall } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 
 export interface Post{
@@ -15,7 +16,5 @@ export interface Post{
 
 
 export class AppComponent{
-
-
-  
+  e:number = Math.E
 }
