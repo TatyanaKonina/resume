@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AppCounterService } from './services/app-counter.service';
 
 export interface Post{
   title:string
@@ -17,22 +18,9 @@ export interface Post{
 
 
 
-export class AppComponent implements OnInit{
- p: Promise<string> = new Promise<string>(resolve => {
-   setTimeout(()=> {
-     resolve('Promise Resolved')
-   },4000)
- }) 
+export class AppComponent {
+  constructor(public appCounterService: AppCounterService){
 
- date$: Observable<Date> =  new Observable(obs =>{
-   setInterval(() => {
-     obs.next(new Date())
-   },1000)
- })
- date:Date
- ngOnInit():void{
-   this.date$.subscribe(date =>{
-     this.date = date;
-   })
- }
+
+  }
 }
