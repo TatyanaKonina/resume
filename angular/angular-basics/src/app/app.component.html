@@ -46,12 +46,14 @@
       <button type="button" (click)='setCapital()' class="btn">Выбрать столицу</button>
     </div>
 
-    <div class="card">
+    <div class="card" formGroupName='skills'>
       <h2>Ваши навыки</h2>
-      <button type="button" class="btn">Добавить умение</button>
-      <div class="form-control">
-        <label></label>
-        <input type="text">
+      <button (click)='addSkill()' type="button" class="btn">Добавить умение</button>
+      <div 
+      *ngFor="let control of getControls();let idx = index"
+      class="form-control">
+        <label>Skill {{idx + 1}}</label>
+        <input [formControlName]='idx' type="text">
       </div>
     </div>
 
