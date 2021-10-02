@@ -13,6 +13,7 @@
       <small *ngIf="form.get('email')?.errors?.required">Can't be empty</small>
       <small *ngIf="form.get('email')?.errors?.email">Type correct email</small>
       <small *ngIf="form.get('email')?.errors?.restrictedEmail">restricted</small>
+      <small *ngIf="form.get('email')?.errors?.uniqEmail">not uniq</small>
       </div>
     </div>
 
