@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 
@@ -24,8 +24,8 @@ export class AppComponent implements OnInit{
   form: FormGroup
   ngOnInit(){
     this.form = new FormGroup({
-      email: new FormControl(''),
-      password: new FormControl(null)
+      email: new FormControl('', [Validators.email, Validators.required]),
+      password: new FormControl(null,[Validators.required, Validators.minLength(6)])
     })
   }
   submit(){
