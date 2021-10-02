@@ -12,6 +12,7 @@
       >
       <small *ngIf="form.get('email')?.errors?.required">Can't be empty</small>
       <small *ngIf="form.get('email')?.errors?.email">Type correct email</small>
+      <small *ngIf="form.get('email')?.errors?.restrictedEmail">restricted</small>
       </div>
     </div>
 
@@ -23,6 +24,7 @@
       class="validation">
         <small *ngIf="form.get('password')?.errors?.required">Can't be empty</small>
         <small *ngIf="form.get('password')?.errors?.minlength">Must be longer that {{form.get('password')?.errors?.minlength.requiredLength}} chars</small>
+        
       </div>
     </div>
 
