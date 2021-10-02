@@ -1,14 +1,8 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
 
 
-export interface Post{
-  title:string
-  text:string
-  [key : string]: string
-}
 
 
 @Component({
@@ -35,5 +29,17 @@ export class AppComponent implements OnInit{
   submit(){
     const formData = {...this.form.value}
     console.log(formData)
+  }
+  setCapital(){
+    const cityMap:{[country:string]:string} = {
+      ru: 'Moscow',
+      ua:'Kiev',
+      by: 'Minsk'
+    }
+    const cityKey = this.form.get('address')?.get('country')?.value
+    const city = cityMap[cityKey]
+    this.form.patchValue({
+      address: {city}
+    })
   }
 }
