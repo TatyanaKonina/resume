@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 
@@ -19,7 +20,12 @@ export interface Post{
 
 
 
-export class AppComponent {
-  constructor(){
+export class AppComponent implements OnInit{
+  form: FormGroup
+  ngOnInit(){
+    this.form = new FormGroup({})
+  }
+  submit(){
+    console.log(this.form)
   }
 }
