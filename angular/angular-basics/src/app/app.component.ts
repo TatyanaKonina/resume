@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AppCounterService } from './services/app-counter.service';
+import { LocalcalCounterService } from './services/localcal-counter.service';
 
 export interface Post{
   title:string
@@ -13,12 +14,14 @@ export interface Post{
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.sass'],
+  providers : [LocalcalCounterService]
 })
 
 
 
 export class AppComponent {
-  constructor(public appCounterService: AppCounterService){
+  constructor(public appCounterService: AppCounterService,
+    public localCounterService: LocalcalCounterService){
   }
 }
