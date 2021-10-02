@@ -1,6 +1,9 @@
+import { Injectable } from "@angular/core"
 
-
-export class AppCounterService{
+@Injectable({
+    providedIn: 'root'
+})
+export class AppCounterService {
     counter = 0
     increase(){
         this.counter++

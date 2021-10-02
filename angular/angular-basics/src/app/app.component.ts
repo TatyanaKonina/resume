@@ -20,7 +20,5 @@ export interface Post{
 
 export class AppComponent {
   constructor(public appCounterService: AppCounterService){
-
-
   }
 }
