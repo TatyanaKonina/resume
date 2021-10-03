@@ -1,16 +1,16 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { SwitchComponent } from './switch/switch.component';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SwitchComponent,  
+
   ],
   imports: [
     BrowserModule,
@@ -22,4 +22,9 @@ import { SwitchComponent } from './switch/switch.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule implements OnInit {
+  ngOnInit(): void {
+    
+  }
+  
+ }
