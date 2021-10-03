@@ -1,7 +1,7 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
+import{delay} from 'rxjs/operators'
 export interface ToDo{
   completed:boolean,
   title: string,
@@ -23,13 +23,12 @@ export class AppComponent implements OnInit {
  constructor(private http: HttpClient){
    
  }
+ loading:boolean = false
  todos: ToDo[]=[]
  todoTitle= ''
+ 
   ngOnInit(): void {
-    this.http.get<ToDo[]>('https://jsonplaceholder.typicode.com/todos?_limit=2')
-    .subscribe(todos =>{
-      this.todos = todos
-    })
+    this.fetchTodos()
   }
   addTodo(){
     if (!this.todoTitle.trim()){
@@ -45,5 +44,15 @@ export class AppComponent implements OnInit {
         this.todoTitle = ''
         
       })
+  }
+  fetchTodos(){
+    this.loading = true
+    this.http.get<ToDo[]>('https://jsonplaceholder.typicode.com/todos?_limit=2')
+    .pipe(delay(1500))  
+    .subscribe(todos =>{
+        this.todos = todos
+        this.loading = false
+      })
+    
   }
 }
