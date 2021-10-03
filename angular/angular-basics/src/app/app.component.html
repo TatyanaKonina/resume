@@ -1,3 +1,9 @@
 <div class="container">
+ <app-switch 
  
+ [(ngModel)]='appState'
+ (ngModelChange)='handleChange()'
+ ></app-switch>
+
+ <p>{{appState}}</p>
 </div>

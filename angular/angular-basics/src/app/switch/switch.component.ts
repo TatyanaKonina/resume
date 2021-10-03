@@ -1,0 +1,40 @@
+import { Component, forwardRef, OnInit, Provider } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+
+const  VALUE_ACCESSOR: Provider ={
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(()=>SwitchComponent),
+  multi:true  
+}
+@Component({
+  selector: 'app-switch',
+  templateUrl: './switch.component.html',
+  styleUrls: ['./switch.component.sass'],
+  providers:[VALUE_ACCESSOR]
+})
+export class SwitchComponent implements ControlValueAccessor {
+  
+  state = 'off'
+
+  setState(state:string){
+    this.state = state
+    this.onChange(this.state)
+  }
+
+  private onChange = (value:any)=>{}
+  
+  writeValue(state:string): void {
+    this.state = state
+  }
+  registerOnChange(fn: any): void {
+    this.onChange = fn
+  }
+  registerOnTouched(fn: any): void {
+    // this.onChange = fn
+  }
+  setDisabledState(isDisabled:boolean):void{
+
+  }
+
+}
