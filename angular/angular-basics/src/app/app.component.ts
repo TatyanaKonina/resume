@@ -34,7 +34,7 @@ export class AppComponent implements OnInit{
   }
   submit(){
     const formData = {...this.form.value}
-    console.log(formData)
+    this.form.reset()
   }
   setCapital(){
     const cityMap:{[country:string]:string} = {
