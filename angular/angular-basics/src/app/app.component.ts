@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
  loading:boolean = false
  todos: ToDo[]=[]
  todoTitle= ''
+ error:string = ''
  
   ngOnInit(): void {
     this.fetchTodos()
@@ -38,7 +39,7 @@ export class AppComponent implements OnInit {
     }).subscribe(todo=>{
         this.todos.push(todo)
         this.todoTitle = ''
-        
+
       })
   }
   fetchTodos(){
@@ -47,6 +48,9 @@ export class AppComponent implements OnInit {
     .subscribe(todos =>{
         this.todos = todos
         this.loading = false
+      }, error => {
+        console.log(error.message)
+        this.error = error.message
       })
     
   }
