@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, delay } from 'rxjs/operators';
@@ -18,7 +18,12 @@ export class TodosService {
 
   }
   addTodo(todo:ToDo): Observable<ToDo>{
-    return this.http.post<ToDo>('https://jsonplaceholder.typicode.com/todos', todo)
+
+    return this.http.post<ToDo>('https://jsonplaceholder.typicode.com/todos', todo, {
+      headers: new HttpHeaders({
+        'myheader': 'f'
+      })
+    })
   }
   fetchTodos() : Observable<ToDo[]> {
     return this.http.get<ToDo[]>('https://jsonplaceholder.typicode.com/todos?_limit=2')
