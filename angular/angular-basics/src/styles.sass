@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto')
 
-* 
+*
   box-sizing: border-box
   margin: 0
   padding: 0
+
 
 body 
   font-family: 'Roboto', sans-serif
@@ -37,12 +38,12 @@ img
 
 .btn 
   display: inline-block
-  background: #333333
+  background: #3333
   color: #fff
   padding: 0.4rem 1.3rem
   font-size: 1rem
   border: none
-  cursor: pointe
+  cursor: pointer
   margin-right: 0.5rem
   transition: opacity 0.2s ease-in
   outline: none
@@ -50,13 +51,6 @@ img
   &:disabled 
     background: #ccc
     color: #000
-    cursor: not-allowed
-  
-
-  &:hover 
-    opacity: 0.8
-  
-
 
 .btn.btn-danger 
   background: #dc3545
@@ -65,7 +59,7 @@ img
 
 .form-control 
   display: block
-  margin-top: 0.3re
+  margin-top: 0.3rem
   margin-bottom: .5rem
 
   label 
@@ -98,9 +92,13 @@ img
     
   
 
+a 
+  text-decoration: none
+  color: #333
 
-input,
-select,
+
+input
+select
 textarea 
   display: block
   width: 100%
@@ -112,4 +110,33 @@ textarea
 
 hr 
   margin: .5rem 0
+
+
+.navbar 
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 0.7rem 2rem
+  z-index: 1
+  width: 100%
+  opacity: 0.9
+  margin-bottom: 1rem
+  background: #dc3545
+  color: #fff
+
+  ul 
+    display: flex
+    
+    li.active a 
+      font-weight: bold
+      color: #333333
+      cursor: default
+    
+  
+
+  a 
+    color: #fff
+    padding: 0.45rem
+    margin: 0 0.25rem
+  
 

@@ -1,36 +1,29 @@
-import { NgModule, OnInit, Provider } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
-import { AppComponent } from './app.component';
-import { AuthInterseptor } from './auth.interseptor';
+import {BrowserModule} from '@angular/platform-browser'
+import {NgModule} from '@angular/core'
 
-
-const INTERCEPTOR_PROVIDER: Provider ={
-  provide: HTTP_INTERCEPTORS,
-  useClass:AuthInterseptor,
-  multi:true
-}
+import {AppComponent} from './app.component'
+import {FormsModule} from '@angular/forms'
+import {AboutComponent} from './about/about.component'
+import {HomeComponent} from './home/home.component'
+import {PostsComponent} from './posts/posts.component'
+import {PostComponent} from './post/post.component'
+import {AboutExtraComponent} from './about-extra/about-extra.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-
+    AboutComponent,
+    HomeComponent,
+    PostsComponent,
+    PostComponent,
+    AboutExtraComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule
   ],
-  providers: [
-    INTERCEPTOR_PROVIDER
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule implements OnInit {
-  ngOnInit(): void {
-    
-  }
-  
- }
+export class AppModule {
+}
