@@ -1,11 +1,16 @@
-import { NgModule, OnInit } from '@angular/core';
+import { NgModule, OnInit, Provider } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { AppComponent } from './app.component';
+import { AuthInterseptor } from './auth.interseptor';
 
 
-
+const INTERCEPTOR_PROVIDER: Provider ={
+  provide: HTTP_INTERCEPTORS,
+  useClass:AuthInterseptor,
+  multi:true
+}
 
 @NgModule({
   declarations: [
@@ -19,7 +24,7 @@ import { AppComponent } from './app.component';
     HttpClientModule
   ],
   providers: [
-    
+    INTERCEPTOR_PROVIDER
   ],
   bootstrap: [AppComponent]
 })
